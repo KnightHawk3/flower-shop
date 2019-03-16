@@ -1,21 +1,10 @@
-# Java Gradle CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
-version: 2
+version: 2.1
 jobs:
   build:
+    working_directory: ~/flowershop
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/flowershop
-
     environment:
       # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
@@ -44,3 +33,10 @@ jobs:
       # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard. 
           path: build/test-results
+
+orbs:
+  heroku: circleci/heroku@1.0.0
+workflows:
+  heroku_deploy:
+    jobs:
+      - heroku/deploy-via-git
