@@ -1,4 +1,8 @@
 spring:
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
   datasource:
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
