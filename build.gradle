@@ -5,11 +5,16 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.spring' version '1.3.21'
 }
 
+jar {
+    baseName = 'flowershop'
+    version = '1.0'
+}
+
 apply plugin: 'kotlin-jpa'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'blue.melody'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
