@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  heroku: circleci/heroku@0.0.6
 jobs:
   build:
     working_directory: ~/flowershop
@@ -34,10 +36,4 @@ jobs:
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard. 
           path: build/test-results
 
-orbs:
-  heroku: circleci/heroku@0.0.6
-workflows:
-  heroku_deploy:
-    jobs:
-      - build
       - heroku/deploy-via-git
