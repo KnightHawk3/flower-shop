@@ -35,7 +35,7 @@ jobs:
           path: build/test-results
 
 orbs:
-  heroku: circleci/heroku@1.0.0
+  heroku: circleci/heroku@0.0.6
 workflows:
   heroku_deploy:
     jobs:
