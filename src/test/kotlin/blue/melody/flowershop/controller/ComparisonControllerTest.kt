@@ -38,8 +38,8 @@ internal class ComparisonControllerTest {
         every { comparisonService.isLongestFlower(any()) } returns true
         val response = comparisonController.compareFlower(flower)
         verify { comparisonService.isLongestFlower(flower) }
-        assertEquals(ComparisonController.LONGEST_MESSAGE, response.message)
-        assertEquals(flower, response.flower)
+        assertEquals(ComparisonController.LONGEST_MESSAGE, response.body?.message)
+        assertEquals(flower, response.body?.flower)
     }
 
     @Test
@@ -47,7 +47,7 @@ internal class ComparisonControllerTest {
         every { comparisonService.isLongestFlower(any()) } returns false
         val response = comparisonController.compareFlower(flower)
         verify { comparisonService.isLongestFlower(flower) }
-        assertEquals(ComparisonController.AVERAGE_MESSAGE, response.message)
-        assertEquals(flower, response.flower)
+        assertEquals(ComparisonController.AVERAGE_MESSAGE, response.body?.message)
+        assertEquals(flower, response.body?.flower)
     }
 }
