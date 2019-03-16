@@ -25,7 +25,7 @@ class ComparisonController @Autowired constructor(private val comparisonService:
     }
 
     companion object {
-        const val LONGEST_MESSAGE = "That's the longest flower I have ever seen!"
+        const val LONGEST_MESSAGE = "Thanks, I love it!"
         const val AVERAGE_MESSAGE = "That's a nice flower."
     }
 }
