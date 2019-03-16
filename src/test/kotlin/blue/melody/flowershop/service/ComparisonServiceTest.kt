@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.util.UUID
 
 @ExtendWith(MockKExtension::class)
 internal class ComparisonServiceTest {
@@ -26,19 +27,19 @@ internal class ComparisonServiceTest {
 
     @Test
     fun `is longest flower is true for new longest`() {
-        every { flowerRepository.findFirstByOrderByLengthDesc() } returns Flower(length = 1, type = "rose")
-        assertTrue(comparisonService.isLongestFlower(Flower(length = 11, type = "rose")))
+        every { flowerRepository.findFirstByOrderByLengthDesc() } returns Flower(length = 1, type = "rose", uuid = UUID.randomUUID())
+        assertTrue(comparisonService.isLongestFlower(Flower(length = 11, type = "rose", uuid = UUID.randomUUID())))
     }
 
     @Test
     fun `is longest flower is true no existing flower`() {
         every { flowerRepository.findFirstByOrderByLengthDesc() } returns null
-        assertTrue(comparisonService.isLongestFlower(Flower(length = 11, type = "rose")))
+        assertTrue(comparisonService.isLongestFlower(Flower(length = 11, type = "rose", uuid = UUID.randomUUID())))
     }
 
     @Test
     fun `is longest flower is false for not longest`() {
-        every { flowerRepository.findFirstByOrderByLengthDesc() } returns Flower(length = 11, type = "rose")
-        assertFalse(comparisonService.isLongestFlower(Flower(length = 1, type = "rose")))
+        every { flowerRepository.findFirstByOrderByLengthDesc() } returns Flower(length = 11, type = "rose", uuid = UUID.randomUUID())
+        assertFalse(comparisonService.isLongestFlower(Flower(length = 1, type = "rose", uuid = UUID.randomUUID())))
     }
 }

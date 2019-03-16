@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.util.UUID
 
 @ExtendWith(MockKExtension::class)
 internal class ComparisonControllerTest {
@@ -18,7 +19,7 @@ internal class ComparisonControllerTest {
     lateinit var comparisonService: ComparisonService
     lateinit var comparisonController: ComparisonController
 
-    private val flower = Flower(length = 1, type = "Rose")
+    private val flower = Flower(length = 1, type = "Rose", uuid = UUID.randomUUID())
 
     @BeforeEach
     fun setUp() {
